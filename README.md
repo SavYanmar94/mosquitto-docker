@@ -68,7 +68,7 @@ Indice
 
 1. Sempre nel terminale e nella cartella certs copiare il seguente codice 
 `# Genera CA  openssl genrsa -out certs/ca.key 2048  openssl req -x509 -new -nodes -key certs/ca.key -sha256 -days 1024 -out certs/ca.crt -subj "/CN=My CA"
-# Genera certificato server  openssl genrsa -out certs/server.key 2048  openssl req -new -key certs/server.key -out certs/server.csr -config openssl-san.cnf
+`# Genera certificato server  openssl genrsa -out certs/server.key 2048  openssl req -new -key certs/server.key -out certs/server.csr -config openssl-san.cnf`
 openssl x509 -req -in certs/server.csr -CA certs/ca.crt -CAkey certs/ca.key -CAcreateserial -out certs/server.crt -days 365 -sha256 -extfile openssl-san.cnf -extensions req_ext`
 
 4\. Setup Container Docker

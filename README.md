@@ -78,7 +78,8 @@ openssl x509 -req -in certs/server.csr -CA certs/ca.crt -CAkey certs/ca.key -CAc
 1. nel terminale posizionandosi sulla cartella di mosquitto copiare il seguente codice : 
 docker-compose up -d
 
-**5\. Node-red, MQTTX e Thingsboard**
+4\. Node-red, MQTTX e Thingsboard
+--------------------------
 
 1.Una volta che il container è in fase di run , su Node-red nella connection inserire un nuovo server ( l'host name generato da no-ip ) , come porta 8883, seleziore TLS e fare l'upload dei certificati di sicurezza presi dalla cartella certs. 
 2.impostare una nuova connessione su mqttx con gli stessi settaggi di node-red. 

@@ -61,8 +61,33 @@ Indice
 ### 3.2 Creazione File di Configurazione OpenSSL
 
 1. Aprendo il terminale, posizionandosi nella cartella certs copiare il codice di seguito , andando debitamente a sostituire State, Locality , Organization e tuoserver.ddns.net
+ 
+# Crea file openssl-san.cnf
+cat > openssl-san.cnf << EOF
+[ req ]
+default_bits       = 2048
+distinguished_name = req_distinguished_name
+req_extensions     = req_ext
+x509_extensions    = v3_ca
+prompt            = no
 
-`# Crea file openssl-san.cnf  cat  > openssl-san.cnf <<  EOF [ req ] default_bits       = 2048 distinguished_name = req_distinguished_name req_extensions     = req_ext x509_extensions    = v3_ca prompt            = no   [ req_distinguished_name ] C  = IT ST = State L  = Locality O  = Organization CN = tuoserver.ddns.net   [ req_ext ] subjectAltName = @alt_names   [ v3_ca ] subjectAltName = @alt_names   [ alt_names ] DNS.1 = tuoserver.ddns.net DNS.2 = localhost EOF`
+[ req_distinguished_name ]
+C  = IT
+ST = State
+L  = Locality
+O  = Organization
+CN = tuoserver.ddns.net
+
+[ req_ext ]
+subjectAltName = @alt_names
+
+[ v3_ca ]
+subjectAltName = @alt_names
+
+[ alt_names ]
+DNS.1 = tuoserver.ddns.net
+DNS.2 = localhost
+EOF
 
 ### 3.3 Generazione Certificati
 

@@ -58,11 +58,10 @@ Indice
 ### 3.1 Preparazione Directory
 1. Cancellare tutto il contenuto della cartella certs ( poichè bisogna associare il nuovo hostname) 
 
-### 3.2 Creazione File di Configurazione OpenSSL
+### 3.2 Creazione File di Configurazione OpenSSL openssl-san.cnf
 
 1. Aprendo il terminale, posizionandosi nella cartella certs copiare il codice di seguito , andando debitamente a sostituire State, Locality , Organization e tuoserver.ddns.net
  
-# Crea file openssl-san.cnf
 cat > openssl-san.cnf << EOF
 [ req ]
 default_bits       = 2048
@@ -91,10 +90,16 @@ EOF
 
 ### 3.3 Generazione Certificati
 
-1. Sempre nel terminale e nella cartella certs copiare il seguente codice 
-`# Genera CA  openssl genrsa -out certs/ca.key 2048  openssl req -x509 -new -nodes -key certs/ca.key -sha256 -days 1024 -out certs/ca.crt -subj "/CN=My CA"
-`# Genera certificato server  openssl genrsa -out certs/server.key 2048  openssl req -new -key certs/server.key -out certs/server.csr -config openssl-san.cnf`
-openssl x509 -req -in certs/server.csr -CA certs/ca.crt -CAkey certs/ca.key -CAcreateserial -out certs/server.crt -days 365 -sha256 -extfile openssl-san.cnf -extensions req_ext`
+1. Sempre nel terminale e nella cartella certs copiare il seguente codice  per generare il CA
+   
+openssl genrsa -out certs/ca.key 2048  
+openssl req -x509 -new -nodes -key certs/ca.key -sha256 -days 1024 -out certs/ca.crt -subj "/CN=My CA"
+
+2. Sempre nel terminale e nella cartella certs copiare il seguente codice  per generare il certificato server 
+
+openssl genrsa -out certs/server.key 2048  
+openssl req -new -key certs/server.key -out certs/server.csr -config openssl-san.cnf
+openssl x509 -req -in certs/server.csr -CA certs/ca.crt -CAkey certs/ca.key -CAcreateserial -out certs/server.crt -days 365 -sha256 -extfile openssl-san.cnf -extensions req_ext
 
 4\. Setup Container Docker
 --------------------------

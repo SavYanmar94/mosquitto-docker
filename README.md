@@ -98,7 +98,7 @@ openssl req -x509 -new -nodes -key certs/ca.key -sha256 -days 1024 -out certs/ca
 2. Sempre nel terminale e nella cartella certs copiare il seguente codice  per generare il certificato server 
 
 openssl genrsa -out certs/server.key 2048  
-openssl req -new -key certs/server.key -out certs/server.csr -config openssl-san.cnf
+openssl req -new -key certs/server.key -out certs/server.csr -config openssl-san.cnf'
 openssl x509 -req -in certs/server.csr -CA certs/ca.crt -CAkey certs/ca.key -CAcreateserial -out certs/server.crt -days 365 -sha256 -extfile openssl-san.cnf -extensions req_ext
 
 4\. Setup Container Docker

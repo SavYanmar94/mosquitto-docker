@@ -34,14 +34,18 @@ Indice
 3.  Configura DUC con le tue credenziali No-IP
 4.  Avvia il servizio DUC
 
-### 2.2 Port Forwarding
+   2\. Configurazione Router
+------------------------------
 
-1.  Trova la sezione "Port Forwarding" o "Virtual Server"
+### 2.1 Port Forwarding
+
+1.  Andare sull'indirizzo ip del router e trovrea la sezione "Port Forwarding" o "Port Mapping"
 2.  Aggiungi le seguenti regole:
     -   Porta 1883 (MQTT non-SSL)
     -   Porta 8883 (MQTT SSL)
 
-    `Nome: MQTT Porta Esterna: 1883
+    `Nome: MQTT
+    Porta Esterna: 1883
     Porta Interna: 1883
     Protocollo: TCP
     IP Destinazione: [IP del tuo computer]
@@ -60,7 +64,7 @@ Indice
 
 ### 3.2 Creazione File di Configurazione OpenSSL openssl-san.cnf
 
-1. Aprendo il terminale, posizionandosi nella cartella certs copiare il codice di seguito , andando debitamente a sostituire State, Locality , Organization e tuoserver.ddns.net
+1. Aprendo il terminale, posizionandosi nella cartella certs, copiare il codice di seguito , andando debitamente a sostituire State, Locality , Organization e tuoserver.ddns.net
  
 cat > openssl-san.cnf << EOF
 [ req ]

@@ -39,7 +39,7 @@ Indice
 
 ### 2.1 Port Forwarding
 
-1.  Andare sull'indirizzo ip del proprio router wifi e trovare la sezione "Port Forwarding" o "Port Mapping"
+1.  Andare sull'indirizzo web del proprio router wifi e trovare la sezione "Port Forwarding" o "Port Mapping"
 2.  Aggiungi le seguenti regole:
     -   Porta 1883 (MQTT non-SSL)
     -   Porta 8883 (MQTT SSL)
@@ -48,7 +48,7 @@ Indice
     Porta Esterna: 1883
     Porta Interna: 1883
     Protocollo: TCP
-    IP Destinazione: [IP del tuo computer]
+    IP Destinazione: [IP del tuo computer] ( si puo trovare dopo aver inserito nel terminale "ipconfig" alla voce ipv4 address)
 
     Nome: MQTT-SSL
     Porta Esterna: 8883
